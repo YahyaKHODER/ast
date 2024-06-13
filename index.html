@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Astremiha</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      line-height: 1.6;
+      background-color: #fff;
+      scroll-behavior: smooth;
+    }
+
+    .header {
+      background: #fff;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      width: 100px;
+      margin-right: 0.5rem;
+    }
+
+    .nav ul {
+      list-style: none;
+      display: flex;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav li {
+      margin-right: 1.5rem;
+    }
+
+    .nav a {
+      text-decoration: none;
+      color: #333;
+      position: relative;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .nav a.active,
+    .nav a:hover {
+      color: #4057db;
+    }
+
+    .nav a.active::after,
+    .nav a:hover::after {
+      content: '.';
+      color: #4057db;
+      position: absolute;
+      top: 50%;
+      right: -0.5rem;
+      transform: translateY(-50%);
+    }
+
+    .btn {
+      background: #4057db;
+      color: #fff;
+      padding: 0.5rem 1rem;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+      margin-top: 1rem;
+    }
+
+    .menu-toggle {
+      display: none;
+    }
+
+    .home {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4rem 1rem;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+      height: 100vh;
+      min-height: 600px;
+    }
+
+    .home-content {
+      max-width: 600px;
+      margin-right: auto;
+      opacity: 0;
+      animation: fadeIn 3s ease-in-out forwards;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+
+    .home-content h2 {
+      margin: 0;
+      font-size: 2rem;
+      font-weight: bold;
+      text-align: right;
+      white-space: nowrap;
+      color: #4057db;
+    }
+
+    .home-content p {
+      margin: 1rem 0;
+      font-size: 1.25rem;
+      color: #333;
+    }
+
+    .home-media {
+      max-width: 500px;
+      width: 100%;
+    }
+
+    .section {
+      padding: 4rem 1rem;
+      background: #fff;
+      color: #333;
+      text-align: center;
+      position: relative;
+    }
+
+    .section:not(:first-of-type):not(:nth-of-type(2))::before {
+      content: '';
+      display: block;
+      width: 80%;
+      height: 4px;
+      background: #4057db;
+      position: absolute;
+      top: 0;
+      left: 10%;
+    }
+
+    .section-header {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .section-header::after {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 2px;
+      background: #4057db;
+      margin: 1rem 0;
+    }
+
+    .section-content {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    .section-content h3 {
+      font-size: 1.5rem;
+      color: #333;
+      margin-bottom: 0.5rem;
+    }
+
+    .contact-map {
+      width: 100%;
+      height: 300px;
+      margin-top: 2rem;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 1rem;
+      margin: 0.5rem 0;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+
+    .contact-form button {
+      background: #4057db;
+      color: #fff;
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+      margin-top: 1rem;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .team-card {
+      text-align: center;
+      padding: 1rem;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      transition: transform 0.2s, background-color 0.2s;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .team-card:hover {
+      transform: scale(1.05);
+      background-color: #4057db;
+      color: #fff;
+    }
+
+    .team-card img {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 0.5rem;
+      border: 2px solid #ddd;
+      transition: border-color 0.2s;
+    }
+
+    .team-card h3 {
+      font-size: 1.25rem;
+      margin: 0.5rem 0;
+    }
+
+    .team-card p {
+      font-size: 1rem;
+      color: #777;
+    }
+
+    .btn-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 0.5rem;
+    }
+
+    .btn-container button {
+      margin: 0 0.2rem;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      background: #4057db;
+      color: #fff;
+      padding: 0.3rem 0.6rem;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .btn-container button i {
+      margin-right: 0.3rem;
+    }
+
+    .btn-container button:hover {
+      background: #333;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background-color: #fff;
+      padding: 2rem;
+      border-radius: 10px;
+      max-width: 600px;
+      width: 80%;
+      text-align: center;
+    }
+
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .team-separator {
+      margin: 3rem 0;
+    }
+
+    .research-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      text-align: left;
+    }
+
+    .research-item {
+      padding: 1rem;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      margin-bottom: 1rem;
+      background: #fff;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s, background-color 0.2s;
+      width: 80%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .research-item:hover {
+      transform: scale(1.02);
+      background-color: #f5f5f5;
+    }
+
+    .research-item h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: #4057db;
+    }
+
+    .research-item p {
+      font-size: 1rem;
+      color: #333;
+      margin-bottom: 0.5rem;
+    }
+
+    .research-item .detail-link {
+      display: block;
+      color: #4057db;
+      text-decoration: none;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+
+    .research-item .detail-link:hover {
+      text-decoration: underline;
+    }
+
+    .research-item .meta {
+      font-size: 0.9rem;
+      color: #555;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: #f8f8f8;
+    }
+
+    .partners-grid {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .partner-card {
+      flex: 1 1 calc(50% - 1rem);
+      margin: 0.5rem;
+      text-align: center;
+    }
+
+    .partner-card img {
+      width: 200px;
+      height: 200px;
+      object-fit: contain;
+      margin-bottom: 1rem;
+    }
+
+    .partner-card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .partner-card p {
+      font-size: 1rem;
+      color: #555;
+    }
+
+    .location-container {
+      display: flex;
+      align-items: center;
+      margin-top: 1rem;
+      margin-left: 20px;
+    }
+
+    .location-icon {
+      width: 24px;
+      height: 24px;
+      margin-right: 0.5rem;
+    }
+
+    .location-text {
+      font-size: 1rem;
+      color: #333;
+      margin-left: 10px;
+    }
+
+    .contact-info {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin-top: 1rem;
+    }
+
+    .social-media {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .social-media a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 2px solid #4057db;
+      text-decoration: none;
+      color: #4057db;
+      font-size: 1.2rem;
+      transition: background-color 0.2s, color 0.2s;
+    }
+
+    .social-media a:hover {
+      background-color: #4057db;
+      color: #fff;
+    }
+
+    @media (max-width: 768px) {
+      .nav ul {
+        flex-direction: column;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .home {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .home-media {
+        margin-top: 2rem;
+      }
+
+      .section-content {
+        text-align: center;
+      }
+
+      .team-card img {
+        width: 80px;
+        height: 80px;
+      }
+
+      .research-item {
+        width: 100%;
+      }
+
+      .partners-grid {
+        flex-direction: column;
+      }
+
+      .partner-card {
+        flex: 1 1 100%;
+        margin: 1rem 0;
+      }
+
+      .partner-card img {
+        width: 80px;
+        height: 80px;
+      }
+
+      .contact-info {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="header">
+    <div class="container">
+      <a class="logo" href="#home">
+        <img src="astremiha.jpeg" alt="Astremiha Logo">
+      </a>
+      <nav class="nav">
+        <ul>
+          <li><a href="#home" class="active">Home</a></li>
+          <li><a href="#services">About Us</a></li>
+          <li><a href="#teams">Our Team</a></li>
+          <li><a href="#research">Our Research</a></li>
+          <li><a href="#partners">Partners</a></li>
+          <li><a href="#contact" class="btn">Contact Us</a></li>
+        </ul>
+      </nav>
+      <button class="menu-toggle"><i class="icon-menu"></i></button>
+    </div>
+  </header>
+  <main>
+    <section id="home" class="home">
+      <video autoplay muted loop playsinline style="position: absolute; width: 100%; height: 100%; object-fit: cover; z-index: -1;">
+        <source src="home-video.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <div class="container">
+        <div class="home-content">
+          <h2 style="text-align: right; white-space: nowrap;">ASTREMIHA THERAPEUTICS develops <br> a new class of broad-spectrum antivirals</h2>
+          <div style="text-align: left;"><p><b>Discover, Prevent and Cure</b></p></div>
+          <div style="text-align: center;">
+            <button class="btn" onclick="document.getElementById('services').scrollIntoView({ behavior: 'smooth' });">About Us</button>
+          </div>
+        </div>
+        <div class="home-media">
+          <lottie-player src="lottie/homehome.json" background="transparent" speed="0.5" loop autoplay></lottie-player>
+        </div>
+      </div>
+    </section>
+    <section id="services" class="section">
+      <div class="container">
+        <h2 class="section-header">About Us</h2>
+        <div class="section-content">
+          <img src="text.png" alt="Description of image" width="50" height="50">
+          According to the <b>WHO</b>, infectious diseases are among the top three leading causes of death worldwide. 
+          <b>ASTREMIHA Therapeutics</b> is developing <b>broad-spectrum</b> antivirals aimed at blocking viral replication and strengthening the immune system to combat infections. 
+          These next-generation antivirals will address urgent and priority health needs such as <b>AIDS</b> and <b>long COVID</b>, with innovative preventive and curative properties.</p>
+        </div>
+      </div>
+    </section>
+    <section id="teams" class="section">
+      <div class="container">
+        <h2 class="section-header">Our Team</h2>
+        <div class="section-content">
+          <p>Teams & Investors: Our team's DNA is encoded with 4 letters: Ambitious, Creative, Talented & Goal-oriented people</p>
+          <h3>Board Members:</h3>
+          <div class="team-grid">
+            <div class="team-card">
+              <img src="thierry.jpeg" alt="Thierry Roussel">
+              <h3>Thierry Roussel</h3>
+              <p>Entrepreneur Investor</p>
+              <div class="btn-container">
+                <button onclick="openModal('modalThierry')">+</button>
+                <button onclick="window.open('https://www.linkedin.com/in/thierry-roussel-60a58250/?originalSubdomain=fr', '_blank')"><i class="fab fa-linkedin-in"></i></button>
+                <button onclick="location.href='mailto:thierry@example.com'"><i class="fas fa-envelope"></i></button>
+              </div>
+            </div>
+            <div class="team-card">
+              <img src="francois.jpeg" alt="François Rossier">
+              <h3>François Rossier</h3>
+              <p>Strategic Consultant</p>
+              <div class="btn-container">
+                <button onclick="openModal('modalFrancois')">+</button>
+                <button onclick="window.open('https://www.linkedin.com/in/fran%C3%A7oisrossier/?originalSubdomain=ch', '_blank')"><i class="fab fa-linkedin-in"></i></button>
+                <button onclick="location.href='mailto:francois@example.com'"><i class="fas fa-envelope"></i></button>
+              </div>
+            </div>
+            <div class="team-card">
+              <img src="raphael.jpeg" alt="Raphael de Saint Exupéry">
+              <h3>Raphael de Saint Exupéry</h3>
+              <p>MSc – Management, Data Analysis, Innovation Management, Pharma Consulting, Co-Founder</p>
+              <div class="btn-container">
+                <button onclick="openModal('modalRaphael')">+</button>
+                <button onclick="window.open('https://www.linkedin.com/in/raphael-de-saint-exupery/', '_blank')"><i class="fab fa-linkedin-in"></i></button>
+                <button onclick="location.href='mailto:raphael@example.com'"><i class="fas fa-envelope"></i></button>
+              </div>
+            </div>
+            <div class="team-card">
+              <img src="Ceo.jpeg" alt="Sophie Durand">
+              <h3>Sophie Durand</h3>
+              <p>CEO</p>
+              <div class="btn-container">
+                <button onclick="openModal('modalSophie')">+</button>
+                <button onclick="window.open('https://www.linkedin.com/in/sophie-denanteuildurand/', '_blank')"><i class="fab fa-linkedin-in"></i></button>
+                <button onclick="location.href='mailto:sophie@example.com'"><i class="fas fa-envelope"></i></button>
+              </div>
+            </div>
+          </div>
+          <div class="team-separator"></div>
+          <h3>Scientific Advisory Board Members:</h3>
+          <div class="team-grid">
+            <div class="team-card">
+              <img src="founder.jpeg" alt="Mireille Laforge">
+              <h3>Mireille Laforge</h3>
+              <p>PhD, HDR, CR CNRS, Founder, CSO</p>
+              <div class="btn-container">
+                <button onclick="openModal('modalMireille')">+</button>
+                <button onclick="window.open('https://www.linkedin.com/in/mireille-laforge-77482a4a/', '_blank')"><i class="fab fa-linkedin-in"></i></button>
+                <button onclick="location.href='mailto:mireille@example.com'"><i class="fas fa-envelope"></i></button>
+              </div>
+            </div>
+            <div class="team-card">
+              <img src="pierre.webp" alt="Pierre Gressens">
+              <h3>Pierre Gressens</h3>
+              <p>MD, PhD, DRE INSERM, Co-Founder, Co-CSO</p>
+              <div class="btn-container">
+                <button onclick="openModal('modalPierre')">+</button>
+                <button onclick="window.open('https://www.linkedin.com/in/pierre-gressens-5b1bb014b/', '_blank')"><i class="fab fa-linkedin-in"></i></button>
+                <button onclick="location.href='mailto:pierre@example.com'"><i class="fas fa-envelope"></i></button>
+              </div>
+            </div>
+            <div class="team-card">
+              <img src="philippe.jpeg" alt="Philippe Rouanet De Berchoux">
+              <h3>Philippe Rouanet De Berchoux</h3>
+              <p>Medical Advisor</p>
+              <div class="btn-container">
+                <button onclick="openModal('modalPhilippe')">+</button>
+                <button onclick="window.open('https://www.linkedin.com/in/philippe-rouanet-de-berchoux-1940625b/?originalSubdomain=fr/', '_blank')"><i class="fab fa-linkedin-in"></i></button>
+                <button onclick="location.href='mailto:philippe@example.com'"><i class="fas fa-envelope"></i></button>
+              </div>
+            </div>
+            <div class="team-card">
+              <img src="bruno.jpeg" alt="Bruno Villoutreix">
+              <h3>Bruno Villoutreix</h3>
+              <p>Drug Development Advisor</p>
+              <div class="btn-container">
+                <button onclick="openModal('modalBruno')">+</button>
+                <button onclick="window.open('https://www.linkedin.com/in/villoutreix/?originalSubdomain=fr/', '_blank')"><i class="fab fa-linkedin-in"></i></button>
+                <button onclick="location.href='mailto:Bruno@example.com'"><i class="fas fa-envelope"></i></button>
+              </div>
+            </div>
+            <div class="team-card">
+              <img src="michael.jpeg" alt="Bruno Villoutreix">
+              <h3>Michael Spedding</h3>
+              <p>Drug Development Advisor</p>
+              <div class="btn-container">
+                <button onclick="openModal('modalMichael')">+</button>
+                <button onclick="window.open('https://www.linkedin.com/in/michael-spedding-58b36460/?originalSubdomain=fr/', '_blank')"><i class="fab fa-linkedin-in"></i></button>
+                <button onclick="location.href='mailto:Michael@example.com'"><i class="fas fa-envelope"></i></button>
+              </div>
+            </div>
+            <div class="team-card">
+              <img src="nicolas.jpeg" alt="Nicolas Chomont">
+              <h3>Nicolas Chomont</h3>
+              <p>Scientific Advisor, Immunopathology/Infectiology</p>
+              <div class="btn-container">
+                <button onclick="openModal('modalNicolas')">+</button>
+                <button onclick="window.open('https://www.linkedin.com/in/nicolas-chomont-b7885a24/?locale=en_US/', '_blank')"><i class="fab fa-linkedin-in"></i></button>
+                <button onclick="location.href='mailto:Nicolas@example.com'"><i class="fas fa-envelope"></i></button>
+              </div>
+            </div>
+            <div class="team-card">
+              <img src="vincent.jpeg" alt="Vincent Calvez">
+              <h3>Vincent Calvez</h3>
+              <p>Scientific Advisor, Infectiology/Viral Infection</p>
+              <div class="btn-container">
+                <button onclick="openModal('modalVincent')">+</button>
+                <button onclick="window.open('https://www.linkedin.com/in/vincent-calvez-97b0411b/?originalSubdomain=fr/', '_blank')"><i class="fab fa-linkedin-in"></i></button>
+                <button onclick="location.href='mailto:Vincent@example.com'"><i class="fas fa-envelope"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="research" class="section">
+      <div class="container">
+        <h2 class="section-header">Our Research</h2>
+        <ul class="research-list">
+          <li class="research-item">
+            <h3>Immuno-metabolic pathophysiological study of long Covid</h3>
+            <p class="meta">2023-01 to 2025-12 | Contract | Fondation pour la Recherche Médicale (Paris, FR)</p>
+            <a href="https://www.frm.org/recherches-maladies-infectieuses/covid-19/covid-long-quelles-implications-du-systeme-immunitaire-et-de-son-metabolisme" class="detail-link">Show more detail</a>
+            <p class="meta">Source: Laforge Mireille</p>
+          </li>
+          <li class="research-item">
+            <h3>MétaboImmunoNeuroDéveloppement/MIND</h3>
+            <p class="meta">2023-01 to 2023-12 | Contract | ANRS-MIE (Paris, FR)</p>
+            <a href="https://www.anrs.fr/chercheurs/projets" class="detail-link">Show more detail</a>
+            <p class="meta">Source: Laforge Mireille</p>
+          </li>
+          <li class="research-item">
+            <h3>Metabo-AIDS</h3>
+            <p class="meta">2022-09 to 2025-09 | Contract | ANRS-MIE (Paris, FR)</p>
+            <a href="https://www.anrs.fr/chercheurs/projets" class="detail-link">Show more detail</a>
+            <p class="meta">Source: Laforge Mireille</p>
+          </li>
+          <li class="research-item">
+            <h3>Role of astrocytes and neuro-immune interactions in the occurrence of neurodevelopmental disorders associated with prematurity</h3>
+            <p class="meta">2021-01 to 2023-12 | Contract | Fondation de France (Paris, FR)</p>
+            <p class="meta">Source: Laforge Mireille</p>
+          </li>
+          <li class="research-item">
+            <h3>QVVIROSTOP</h3>
+            <p class="meta">2020-09 to 2022-05 | Contract | Erganeo/INSERM-TRANSFERT (Paris, FR)</p>
+            <p class="meta">Source: Laforge Mireille</p>
+          </li>
+          <li class="research-item">
+            <h3>Role of mitochondrial morphology in AIDS pathogenesis</h3>
+            <p class="meta">2018-06 to 2020-12 | Contract | ANRS (Paris, FR)</p>
+            <p class="meta">Source: Laforge Mireille</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <section id="partners" class="section">
+      <div class="container">
+        <h2 class="section-header">Our Partners</h2>
+        <div class="section-content">
+          <div class="partners-grid">
+            <div class="partner-card">
+              <img src="paris-biotech-sante-logo.svg" alt="Paris Bio Santé">
+              <h3>Paris Bio Santé</h3>
+              <p>Incubator, Accelerator for innovative business in the field of human health.</p>
+            </div>
+            <div class="partner-card">
+              <img src="universite-de-paris.jpeg" alt="Université de Paris">
+              <h3>Université de Paris</h3>
+              <p>The University of Paris laboratory focuses on cutting-edge research and development.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="contact" class="section">
+      <div class="container">
+        <h2 class="section-header">Contact Us</h2>
+        <div class="section-content contact-info">
+          <div class="location-container">
+            <img src="location.svg" alt="Location Icon" class="location-icon">
+            <div class="location-text">
+              <p>Paris Bio Santé</p>
+              <p>Faculté de Médecine</p>
+              <p>Site Cochin</p>
+              <p>24 Rue du Faubourg Saint-Jacques</p>
+              <p>75014 Paris, Île-de-France</p>
+            </div>
+          </div>
+          <div class="location-container">
+            <img src="transport.svg" alt="Transport Icon" class="location-icon">
+            <div class="location-text">
+              <p>RER B : Port-Royal</p>
+              <p>Métro Ligne 6 : Saint-Jacques</p>
+              <p>Bus : 91-83</p>
+            </div>
+          </div>
+        </div>
+        <div class="contact-form">
+          <h3>Ask us anything</h3>
+          <form>
+            <input type="text" name="name" placeholder="Name" required>
+            <input type="email" name="email" placeholder="E-mail" required>
+            <textarea name="message" placeholder="Type your message here..." rows="5" required></textarea>
+            <button type="submit">SEND</button>
+          </form>
+        </div>
+      </div>
+    </section>
+    <section class="social-media">
+      <a href="https://twitter.com"><i class="fab fa-twitter"></i></a>
+      <a href="https://linkedin.com"><i class="fab fa-linkedin-in"></i></a>
+      <a href="https://instagram.com"><i class="fab fa-instagram"></i></a>
+    </section>
+    <br>
+  </main>
+  <footer>
+    <p>Astremiha © All rights reserved</p>
+  </footer>
+
+  <div id="modalThierry" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modalThierry')">&times;</span>
+      <h2>Thierry Roussel</h2>
+      <p>Entrepreneur Investor</p>
+    </div>
+  </div>
+
+  <div id="modalFrancois" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modalFrancois')">&times;</span>
+      <h2>François Rossier</h2>
+      <p>Strategic Consultant</p>
+    </div>
+  </div>
+
+  <div id="modalMireille" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modalMireille')">&times;</span>
+      <h2>Mireille Laforge</h2>
+      <p>PhD, HDR, CR CNRS, Founder, CSO</p>
+    </div>
+  </div>
+
+  <div id="modalPierre" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modalPierre')">&times;</span>
+      <h2>Pierre Gressens</h>
+      <p>MD, PhD, DRE INSERM, Co-Founder, Co-CSO</p>
+    </div>
+  </div>
+
+  <div id="modalPhilippe" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modalPhilippe')">&times;</span>
+      <h2>Philippe Rouanet De Berchoux</h2>
+      <p>Medical Advisor</p>
+    </div>
+  </div>
+  <div id="modalBruno" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modalBruno')">&times;</span>
+      <h2>Bruno Villoutreix</h2>
+      <p>Drug development advisor</p>
+    </div>
+  </div>
+
+  <div id="modalMichael" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modalMichael')">&times;</span>
+      <h3>Michael Spedding</h3>
+      <p>Drug Development Advisor</p>
+    </div>
+  </div>
+
+  <div id="modalNicolas" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modalNicolas')">&times;</span>
+      <h3>Nicolas Chomont</h3>
+      <p>Scientific Advisor, Immunopathology/Infectiology</p>
+    </div>
+  </div>
+
+  <div id="modalVincent" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modalVincent')">&times;</span>
+      <h3>Vincent Calvez</h3>
+      <p>Scientific Advisor, Infectiology/Viral Infection</p>
+    </div>
+  </div>
+
+  <div id="modalRaphael" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modalRaphael')">&times;</span>
+      <h2>Raphael de Saint Exupéry</h2>
+      <p>MSc – Management, Data Analysis, Innovation Management, Pharma Consulting, Co-Founder</p>
+    </div>
+  </div>
+
+  <div id="modalSophie" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modalSophie')">&times;</span>
+      <h2>Sophie Durand</h2>
+      <p>CEO</p>
+    </div>
+  </div>
+
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <script>
+    document.querySelector('.menu-toggle').addEventListener('click', function() {
+      document.querySelector('.nav ul').classList.toggle('show');
+    });
+
+    document.querySelectorAll('.nav a').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        var target = document.querySelector(this.getAttribute('href'));
+        window.scrollTo({
+          top: target.offsetTop,
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    function openModal(id) {
+      document.getElementById(id).style.display = "flex";
+    }
+
+    function closeModal(id) {
+      document.getElementById(id).style.display = "none";
+    }
+  </script>
+</body>
+
+</html>
