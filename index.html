@@ -90,6 +90,27 @@
 
     .menu-toggle {
       display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .close-menu {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #fff;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      justify-content: center;
+      align-items: center;
     }
 
     .home {
@@ -350,6 +371,12 @@
       margin-left: auto;
       margin-right: auto;
     }
+    /* Media query for mobile phones */
+@media (max-width: 767px) {
+  .research-item {
+    width: 90%; /* Adjusted width for smaller screens */
+  }
+}
 
     .research-item:hover {
       transform: scale(1.02);
@@ -475,17 +502,35 @@
     }
 
     @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        padding: 0 1rem;
+      }
+
       .nav ul {
         flex-direction: column;
+        display: none;
+      }
+
+      .nav ul.show {
+        display: flex;
       }
 
       .menu-toggle {
         display: block;
       }
 
+      .close-menu {
+        display: flex;
+      }
+
       .home {
         flex-direction: column;
         text-align: center;
+      }
+
+      .home-content h2 {
+        font-size: 1.5rem;
       }
 
       .home-media {
@@ -501,8 +546,15 @@
         height: 80px;
       }
 
+      .research-list {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
       .research-item {
         width: 100%;
+        padding: 1rem 0.5rem;
       }
 
       .partners-grid {
@@ -542,8 +594,9 @@
           <li><a href="#partners">Partners</a></li>
           <li><a href="#contact" class="btn">Contact Us</a></li>
         </ul>
+        <button class="close-menu" onclick="toggleMenu()"><i class="fas fa-times"></i></button>
       </nav>
-      <button class="menu-toggle"><i class="icon-menu"></i></button>
+      <button class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
     </div>
   </header>
   <main>
@@ -555,7 +608,9 @@
       <div class="container">
         <div class="home-content">
           <h2 style="text-align: right; white-space: nowrap;">ASTREMIHA THERAPEUTICS develops <br> a new class of broad-spectrum antivirals</h2>
-          <div style="text-align: left;"><p><b>Discover, Prevent and Cure</b></p></div>
+          <div style="text-align: left;">
+            <p><b>Discover, Prevent and Cure</b></p>
+          </div>
           <div style="text-align: center;">
             <button class="btn" onclick="document.getElementById('services').scrollIntoView({ behavior: 'smooth' });">About Us</button>
           </div>
@@ -570,8 +625,8 @@
         <h2 class="section-header">About Us</h2>
         <div class="section-content">
           <img src="text.png" alt="Description of image" width="50" height="50">
-          According to the <b>WHO</b>, infectious diseases are among the top three leading causes of death worldwide. 
-          <b>ASTREMIHA Therapeutics</b> is developing <b>broad-spectrum</b> antivirals aimed at blocking viral replication and strengthening the immune system to combat infections. 
+          According to the <b>WHO</b>, infectious diseases are among the top three leading causes of death worldwide.
+          <b>ASTREMIHA Therapeutics</b> is developing <b>broad-spectrum</b> antivirals aimed at blocking viral replication and strengthening the immune system to combat infections.
           These next-generation antivirals will address urgent and priority health needs such as <b>AIDS</b> and <b>long COVID</b>, with innovative preventive and curative properties.</p>
         </div>
       </div>
@@ -847,7 +902,7 @@
   <div id="modalBruno" class="modal">
     <div class="modal-content">
       <span class="close" onclick="closeModal('modalBruno')">&times;</span>
-      <h2>Bruno Villoutreix</h2>
+      <h2>Bruno Villoutreix</h>
       <p>Drug development advisor</p>
     </div>
   </div>
@@ -894,9 +949,10 @@
 
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
   <script>
-    document.querySelector('.menu-toggle').addEventListener('click', function() {
-      document.querySelector('.nav ul').classList.toggle('show');
-    });
+    function toggleMenu() {
+      var nav = document.querySelector('.nav ul');
+      nav.classList.toggle('show');
+    }
 
     document.querySelectorAll('.nav a').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
@@ -906,6 +962,7 @@
           top: target.offsetTop,
           behavior: 'smooth'
         });
+        toggleMenu(); // Close menu after clicking
       });
     });
 
