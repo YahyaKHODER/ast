@@ -4,10 +4,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta http-equiv="X-Compatible" content="ie=edge">
   <title>Astremiha</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <style>
+    /* Existing styles */
     body {
       margin: 0;
       font-family: 'Arial', sans-serif;
@@ -64,8 +65,13 @@
     }
 
     .nav a.active,
-    .nav a:hover {
+    .nav a[href="#services"]:hover {
       color: #4057db;
+    }
+
+    .nav a[href="#contact"].active,
+    .nav a[href="#contact"]:hover {
+      color: #333;
     }
 
     .nav a.active::after,
@@ -332,7 +338,46 @@
       max-width: 600px;
       width: 80%;
       text-align: center;
+      max-height: 80%;
+      /* Set maximum height */
+      overflow-y: auto;
+      /* Enable vertical scrollbar */
     }
+
+    .modal-content h2 {
+  color: #333;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.modal-content h3 {
+  color: #666;
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+.modal-text {
+  line-height: 1.6;
+  color: #555;
+}
+
+.modal-text p {
+  margin-bottom: 15px;
+}
+
+.modal-content .close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.modal-content .close:hover,
+.modal-content .close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
 
     .close {
       color: #aaa;
@@ -371,12 +416,14 @@
       margin-left: auto;
       margin-right: auto;
     }
+
     /* Media query for mobile phones */
-@media (max-width: 767px) {
-  .research-item {
-    width: 90%; /* Adjusted width for smaller screens */
-  }
-}
+    @media (max-width: 767px) {
+      .research-item {
+        width: 90%;
+        /* Adjusted width for smaller screens */
+      }
+    }
 
     .research-item:hover {
       transform: scale(1.02);
@@ -466,11 +513,22 @@
       margin-left: 10px;
     }
 
+    .transport-icon {
+      width: 24px;
+      height: 24px;
+      margin-right: 0.5rem;
+    }
+
+    .transport-text {
+      font-size: 1rem;
+      color: #333;
+      margin-left: 10px;
+    }
+
     .contact-info {
       display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 2rem;
+      flex-direction: column;
+      align-items: center;
       margin-top: 1rem;
     }
 
@@ -601,18 +659,21 @@
   </header>
   <main>
     <section id="home" class="home">
-      <video autoplay muted loop playsinline style="position: absolute; width: 100%; height: 100%; object-fit: cover; z-index: -1;">
+      <video autoplay muted loop playsinline
+        style="position: absolute; width: 100%; height: 100%; object-fit: cover; z-index: -1;">
         <source src="home-video.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
       <div class="container">
         <div class="home-content">
-          <h2 style="text-align: right; white-space: nowrap;">ASTREMIHA THERAPEUTICS develops <br> a new class of broad-spectrum antivirals</h2>
+          <h2 style="text-align: right; white-space: nowrap;">ASTREMIHA THERAPEUTICS develops <br> a new class of
+            broad-spectrum antivirals</h2>
           <div style="text-align: left;">
             <p><b>Discover, Prevent and Cure</b></p>
           </div>
           <div style="text-align: center;">
-            <button class="btn" onclick="document.getElementById('services').scrollIntoView({ behavior: 'smooth' });">About Us</button>
+            <button class="btn"
+              onclick="document.getElementById('services').scrollIntoView({ behavior: 'smooth' });">About Us</button>
           </div>
         </div>
         <div class="home-media">
@@ -626,8 +687,10 @@
         <div class="section-content">
           <img src="text.png" alt="Description of image" width="50" height="50">
           According to the <b>WHO</b>, infectious diseases are among the top three leading causes of death worldwide.
-          <b>ASTREMIHA Therapeutics</b> is developing <b>broad-spectrum</b> antivirals aimed at blocking viral replication and strengthening the immune system to combat infections.
-          These next-generation antivirals will address urgent and priority health needs such as <b>AIDS</b> and <b>long COVID</b>, with innovative preventive and curative properties.</p>
+          <b>ASTREMIHA Therapeutics</b> is developing <b>broad-spectrum</b> antivirals aimed at blocking viral
+          replication and strengthening the immune system to combat infections.
+          These next-generation antivirals will address urgent and priority health needs such as <b>AIDS</b> and <b>long
+            COVID</b>, with innovative preventive and curative properties.</p>
         </div>
       </div>
     </section>
@@ -635,16 +698,109 @@
       <div class="container">
         <h2 class="section-header">Our Team</h2>
         <div class="section-content">
-          <p>Teams & Investors: Our team's DNA is encoded with 4 letters: Ambitious, Creative, Talented & Goal-oriented people</p>
+          <p>Teams & Investors: Our team embodies four essential qualities: Ambition, Creativity, Talent, and a
+            Goal-oriented mindset.</p>
+          <h3>Founders:</h3>
+          <div class="team-grid">
+            <div class="team-card">
+              <img src="founder.jpeg" alt="Mireille Laforge">
+              <h4>Mireille Laforge</h4>
+              <p><small> PhD, HDR, CR CNRS, CSO</small></p>
+              <p><b>Founder</b></p>
+              <p>
+                <small>
+                  <i>
+                    I discovered broad-spectrum antiviral drugs with immune modulation and research immunometabolism's
+                    role in infectious diseases and neurodevelopmental disorders to develop new diagnostic and treatment
+                    strategies.
+                  </i>
+                </small>
+              </p>
+              <div class="btn-container">
+                <button onclick="openModal('modalMireille')">+</button>
+                <button onclick="window.open('https://www.linkedin.com/in/mireille-laforge-77482a4a/', '_blank')"><i
+                    class="fab fa-linkedin-in"></i></button>
+                <button onclick="location.href='mailto:mireille@example.com'"><i class="fas fa-envelope"></i></button>
+              </div>
+            </div>
+            <div class="team-card">
+              <img src="pierre.jpeg" alt="Pierre Gressens">
+              <h3>Pierre Gressens</h3>
+              <p><small>MD, PhD, DRE INSERM, Co-CSO</small></p>
+              <p><b>Co-Founder</b></p>
+              <p>
+                <small>
+                  <i>
+                    Director of multiple research and clinical initiatives, focusing on neurodevelopmental disorders and
+                    treatments related to premature birth, with over 400 published articles.
+                  </i>
+                </small>
+              </p>
+              <div class="btn-container">
+                <button onclick="openModal('modalPierre')">+</button>
+                <button onclick="window.open('https://www.linkedin.com/in/pierre-gressens-5b1bb014b/', '_blank')"><i
+                    class="fab fa-linkedin-in"></i></button>
+                <button onclick="location.href='mailto:pierre@example.com'"><i class="fas fa-envelope"></i></button>
+              </div>
+            </div>
+            <div class="team-card">
+              <img src="raphael.jpeg" alt="Raphael de Saint Exupéry">
+              <h3>Raphael de Saint Exupéry</h3>
+              <p>Innovation Management</p>
+              <p><b>Co-Founder</b></p>
+              <p>
+                <small>
+                  <i>
+                    MSc – Management, Data Analysis, Innovation management and Pharma consulting.
+                  </i>
+                </small>
+              </p>
+              <div class="btn-container">
+                <button onclick="openModal('modalRaphael')">+</button>
+                <button onclick="window.open('https://www.linkedin.com/in/raphael-de-saint-exupery/', '_blank')"><i
+                    class="fab fa-linkedin-in"></i></button>
+                <button onclick="location.href='mailto:raphael@example.com'"><i class="fas fa-envelope"></i></button>
+              </div>
+            </div>
+          </div>
+          <div class="team-separator"></div>
           <h3>Board Members:</h3>
           <div class="team-grid">
             <div class="team-card">
+              <img src="Ceo.jpeg" alt="Sophie Durand">
+              <h3>Sophie Durand</h3>
+              <p>CEO</p>
+              <p>
+                <small>
+                  <i>
+                    TBD..
+                  </i>
+                </small>
+              </p>
+              <div class="btn-container">
+                <button onclick="openModal('modalSophie')">+</button>
+                <button onclick="window.open('https://www.linkedin.com/in/sophie-denanteuildurand/', '_blank')"><i
+                    class="fab fa-linkedin-in"></i></button>
+                <button onclick="location.href='mailto:sophie@example.com'"><i class="fas fa-envelope"></i></button>
+              </div>
+            </div>
+            <div class="team-card">
               <img src="thierry.jpeg" alt="Thierry Roussel">
               <h3>Thierry Roussel</h3>
-              <p>Entrepreneur Investor</p>
+              <p>Independent Administrator</p>
+              <p>
+                <small>
+                  <i>
+                    Entrepreneur and executive, co-founded Direct Energie and Senioradom, sold multiple companies, now
+                    invests in energy, support for vulnerable people, food, and agriculture.
+                  </i>
+                </small>
+              </p>
               <div class="btn-container">
                 <button onclick="openModal('modalThierry')">+</button>
-                <button onclick="window.open('https://www.linkedin.com/in/thierry-roussel-60a58250/?originalSubdomain=fr', '_blank')"><i class="fab fa-linkedin-in"></i></button>
+                <button
+                  onclick="window.open('https://www.linkedin.com/in/thierry-roussel-60a58250/?originalSubdomain=fr', '_blank')"><i
+                    class="fab fa-linkedin-in"></i></button>
                 <button onclick="location.href='mailto:thierry@example.com'"><i class="fas fa-envelope"></i></button>
               </div>
             </div>
@@ -652,30 +808,19 @@
               <img src="francois.jpeg" alt="François Rossier">
               <h3>François Rossier</h3>
               <p>Strategic Consultant</p>
+              <p>
+                <small>
+                  <i>
+                    TBD..
+                  </i>
+                </small>
+              </p>
               <div class="btn-container">
                 <button onclick="openModal('modalFrancois')">+</button>
-                <button onclick="window.open('https://www.linkedin.com/in/fran%C3%A7oisrossier/?originalSubdomain=ch', '_blank')"><i class="fab fa-linkedin-in"></i></button>
+                <button
+                  onclick="window.open('https://www.linkedin.com/in/fran%C3%A7oisrossier/?originalSubdomain=ch', '_blank')"><i
+                    class="fab fa-linkedin-in"></i></button>
                 <button onclick="location.href='mailto:francois@example.com'"><i class="fas fa-envelope"></i></button>
-              </div>
-            </div>
-            <div class="team-card">
-              <img src="raphael.jpeg" alt="Raphael de Saint Exupéry">
-              <h3>Raphael de Saint Exupéry</h3>
-              <p>MSc – Management, Data Analysis, Innovation Management, Pharma Consulting, Co-Founder</p>
-              <div class="btn-container">
-                <button onclick="openModal('modalRaphael')">+</button>
-                <button onclick="window.open('https://www.linkedin.com/in/raphael-de-saint-exupery/', '_blank')"><i class="fab fa-linkedin-in"></i></button>
-                <button onclick="location.href='mailto:raphael@example.com'"><i class="fas fa-envelope"></i></button>
-              </div>
-            </div>
-            <div class="team-card">
-              <img src="Ceo.jpeg" alt="Sophie Durand">
-              <h3>Sophie Durand</h3>
-              <p>CEO</p>
-              <div class="btn-container">
-                <button onclick="openModal('modalSophie')">+</button>
-                <button onclick="window.open('https://www.linkedin.com/in/sophie-denanteuildurand/', '_blank')"><i class="fab fa-linkedin-in"></i></button>
-                <button onclick="location.href='mailto:sophie@example.com'"><i class="fas fa-envelope"></i></button>
               </div>
             </div>
           </div>
@@ -683,52 +828,64 @@
           <h3>Scientific Advisory Board Members:</h3>
           <div class="team-grid">
             <div class="team-card">
-              <img src="founder.jpeg" alt="Mireille Laforge">
-              <h3>Mireille Laforge</h3>
-              <p>PhD, HDR, CR CNRS, Founder, CSO</p>
-              <div class="btn-container">
-                <button onclick="openModal('modalMireille')">+</button>
-                <button onclick="window.open('https://www.linkedin.com/in/mireille-laforge-77482a4a/', '_blank')"><i class="fab fa-linkedin-in"></i></button>
-                <button onclick="location.href='mailto:mireille@example.com'"><i class="fas fa-envelope"></i></button>
-              </div>
-            </div>
-            <div class="team-card">
-              <img src="pierre.webp" alt="Pierre Gressens">
-              <h3>Pierre Gressens</h3>
-              <p>MD, PhD, DRE INSERM, Co-Founder, Co-CSO</p>
-              <div class="btn-container">
-                <button onclick="openModal('modalPierre')">+</button>
-                <button onclick="window.open('https://www.linkedin.com/in/pierre-gressens-5b1bb014b/', '_blank')"><i class="fab fa-linkedin-in"></i></button>
-                <button onclick="location.href='mailto:pierre@example.com'"><i class="fas fa-envelope"></i></button>
-              </div>
-            </div>
-            <div class="team-card">
               <img src="philippe.jpeg" alt="Philippe Rouanet De Berchoux">
               <h3>Philippe Rouanet De Berchoux</h3>
               <p>Medical Advisor</p>
+              <p>
+                <small>
+                  <i>
+                    General practitioner and former Armed Forces Health Service director, specializes in strategic
+                    health
+                    leadership and crisis management.
+                  </i>
+                </small>
+              </p>
               <div class="btn-container">
                 <button onclick="openModal('modalPhilippe')">+</button>
-                <button onclick="window.open('https://www.linkedin.com/in/philippe-rouanet-de-berchoux-1940625b/?originalSubdomain=fr/', '_blank')"><i class="fab fa-linkedin-in"></i></button>
+                <button
+                  onclick="window.open('https://www.linkedin.com/in/philippe-rouanet-de-berchoux-1940625b/?originalSubdomain=fr/', '_blank')"><i
+                    class="fab fa-linkedin-in"></i></button>
                 <button onclick="location.href='mailto:philippe@example.com'"><i class="fas fa-envelope"></i></button>
               </div>
             </div>
             <div class="team-card">
-              <img src="bruno.jpeg" alt="Bruno Villoutreix">
+              <img src="bruno.png" alt="Bruno Villoutreix">
               <h3>Bruno Villoutreix</h3>
               <p>Drug Development Advisor</p>
+              <p>
+                <small>
+                  <i>
+                    Research director at INSERM, specializes in AI-driven drug development and therapeutic protein
+                    design,
+                    with notable contributions to cancer treatment and drug repurposing.
+                  </i>
+                </small>
+              </p>
               <div class="btn-container">
                 <button onclick="openModal('modalBruno')">+</button>
-                <button onclick="window.open('https://www.linkedin.com/in/villoutreix/?originalSubdomain=fr/', '_blank')"><i class="fab fa-linkedin-in"></i></button>
+                <button
+                  onclick="window.open('https://www.linkedin.com/in/villoutreix/?originalSubdomain=fr/', '_blank')"><i
+                    class="fab fa-linkedin-in"></i></button>
                 <button onclick="location.href='mailto:Bruno@example.com'"><i class="fas fa-envelope"></i></button>
               </div>
             </div>
             <div class="team-card">
-              <img src="michael.jpeg" alt="Bruno Villoutreix">
+              <img src="michael.jpeg" alt="Michael Spedding">
               <h3>Michael Spedding</h3>
               <p>Drug Development Advisor</p>
+              <p>
+                <small>
+                  <i>
+                    President of Spedding Research Solutions SAS, focuses on ALS and long COVID drug development,
+                    with a prolific pharmacology career, over 230 publications, and 20+ patents.
+                  </i>
+                </small>
+              </p>
               <div class="btn-container">
                 <button onclick="openModal('modalMichael')">+</button>
-                <button onclick="window.open('https://www.linkedin.com/in/michael-spedding-58b36460/?originalSubdomain=fr/', '_blank')"><i class="fab fa-linkedin-in"></i></button>
+                <button
+                  onclick="window.open('https://www.linkedin.com/in/michael-spedding-58b36460/?originalSubdomain=fr/', '_blank')"><i
+                    class="fab fa-linkedin-in"></i></button>
                 <button onclick="location.href='mailto:Michael@example.com'"><i class="fas fa-envelope"></i></button>
               </div>
             </div>
@@ -736,9 +893,19 @@
               <img src="nicolas.jpeg" alt="Nicolas Chomont">
               <h3>Nicolas Chomont</h3>
               <p>Scientific Advisor, Immunopathology/Infectiology</p>
+              <p>
+                <small>
+                  <i>Associate Professor at the University of Montreal, researches HIV latency and eradication, focusing
+                    on
+                    the persistence of HIV-infected cells and T lymphocyte proliferation.
+                  </i>
+                </small>
+              </p>
               <div class="btn-container">
                 <button onclick="openModal('modalNicolas')">+</button>
-                <button onclick="window.open('https://www.linkedin.com/in/nicolas-chomont-b7885a24/?locale=en_US/', '_blank')"><i class="fab fa-linkedin-in"></i></button>
+                <button
+                  onclick="window.open('https://www.linkedin.com/in/nicolas-chomont-b7885a24/?locale=en_US/', '_blank')"><i
+                    class="fab fa-linkedin-in"></i></button>
                 <button onclick="location.href='mailto:Nicolas@example.com'"><i class="fas fa-envelope"></i></button>
               </div>
             </div>
@@ -746,9 +913,14 @@
               <img src="vincent.jpeg" alt="Vincent Calvez">
               <h3>Vincent Calvez</h3>
               <p>Scientific Advisor, Infectiology/Viral Infection</p>
+              <p><small><i>Professor of Clinical Virology at Sorbonne University, leads the Virology Department at
+                    Pitié-Salpêtrière Hospital, directs the ANRS Virology Network, and has significant contributions in
+                    antiviral and oncology therapeutics.</i></small> </p>
               <div class="btn-container">
                 <button onclick="openModal('modalVincent')">+</button>
-                <button onclick="window.open('https://www.linkedin.com/in/vincent-calvez-97b0411b/?originalSubdomain=fr/', '_blank')"><i class="fab fa-linkedin-in"></i></button>
+                <button
+                  onclick="window.open('https://www.linkedin.com/in/vincent-calvez-97b0411b/?originalSubdomain=fr/', '_blank')"><i
+                    class="fab fa-linkedin-in"></i></button>
                 <button onclick="location.href='mailto:Vincent@example.com'"><i class="fas fa-envelope"></i></button>
               </div>
             </div>
@@ -763,34 +935,8 @@
           <li class="research-item">
             <h3>Immuno-metabolic pathophysiological study of long Covid</h3>
             <p class="meta">2023-01 to 2025-12 | Contract | Fondation pour la Recherche Médicale (Paris, FR)</p>
-            <a href="https://www.frm.org/recherches-maladies-infectieuses/covid-19/covid-long-quelles-implications-du-systeme-immunitaire-et-de-son-metabolisme" class="detail-link">Show more detail</a>
-            <p class="meta">Source: Laforge Mireille</p>
-          </li>
-          <li class="research-item">
-            <h3>MétaboImmunoNeuroDéveloppement/MIND</h3>
-            <p class="meta">2023-01 to 2023-12 | Contract | ANRS-MIE (Paris, FR)</p>
-            <a href="https://www.anrs.fr/chercheurs/projets" class="detail-link">Show more detail</a>
-            <p class="meta">Source: Laforge Mireille</p>
-          </li>
-          <li class="research-item">
-            <h3>Metabo-AIDS</h3>
-            <p class="meta">2022-09 to 2025-09 | Contract | ANRS-MIE (Paris, FR)</p>
-            <a href="https://www.anrs.fr/chercheurs/projets" class="detail-link">Show more detail</a>
-            <p class="meta">Source: Laforge Mireille</p>
-          </li>
-          <li class="research-item">
-            <h3>Role of astrocytes and neuro-immune interactions in the occurrence of neurodevelopmental disorders associated with prematurity</h3>
-            <p class="meta">2021-01 to 2023-12 | Contract | Fondation de France (Paris, FR)</p>
-            <p class="meta">Source: Laforge Mireille</p>
-          </li>
-          <li class="research-item">
-            <h3>QVVIROSTOP</h3>
-            <p class="meta">2020-09 to 2022-05 | Contract | Erganeo/INSERM-TRANSFERT (Paris, FR)</p>
-            <p class="meta">Source: Laforge Mireille</p>
-          </li>
-          <li class="research-item">
-            <h3>Role of mitochondrial morphology in AIDS pathogenesis</h3>
-            <p class="meta">2018-06 to 2020-12 | Contract | ANRS (Paris, FR)</p>
+            <a href="https://www.frm.org/recherches-maladies-infectieuses/covid-19/covid-long-quelles-implications-du-systeme-immunitaire-et-de-son-metabolisme"
+              class="detail-link">Show more detail</a>
             <p class="meta">Source: Laforge Mireille</p>
           </li>
         </ul>
@@ -802,14 +948,18 @@
         <div class="section-content">
           <div class="partners-grid">
             <div class="partner-card">
-              <img src="paris-biotech-sante-logo.svg" alt="Paris Bio Santé">
+              <a href="https://parisbiotechsante.org/en/our-startups/" target="_blank">
+                <img src="paris-biotech-sante-logo.svg" alt="Paris Bio Santé">
+              </a>
               <h3>Paris Bio Santé</h3>
               <p>Incubator, Accelerator for innovative business in the field of human health.</p>
             </div>
             <div class="partner-card">
-              <img src="universite-de-paris.jpeg" alt="Université de Paris">
-              <h3>Université de Paris</h3>
-              <p>The University of Paris laboratory focuses on cutting-edge research and development.</p>
+              <a href="https://neurodiderot.u-paris.fr/en/" target="_blank">
+                <img src="neurodiderot.jpg" alt="Neuro Diderot">
+              </a>
+              <h3>NeuroDiderot</h3>
+              <p>NeuroDiderot is a research Unit created in January 2019.</p>
             </div>
           </div>
         </div>
@@ -839,20 +989,18 @@
           </div>
         </div>
         <div class="contact-form">
-          <h3>Ask us anything</h3>
-          <form>
-            <input type="text" name="name" placeholder="Name" required>
-            <input type="email" name="email" placeholder="E-mail" required>
-            <textarea name="message" placeholder="Type your message here..." rows="5" required></textarea>
-            <button type="submit">SEND</button>
-          </form>
         </div>
+        <div class="calendly-inline-widget"
+          data-url="https://calendly.com/inopakt-business/30min?preview_source=et_card&month=2024-06"
+          style="min-width:620px;height:530px;"></div>
+        <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
       </div>
     </section>
     <section class="social-media">
-      <a href="https://twitter.com"><i class="fab fa-twitter"></i></a>
-      <a href="https://linkedin.com"><i class="fab fa-linkedin-in"></i></a>
-      <a href="https://instagram.com"><i class="fab fa-instagram"></i></a>
+      <h3>Find us</h3>
+      <a href="https://twitter.com" style="pointer-events: none;"><i class="fab fa-twitter"></i></a>
+      <a href="https://linkedin.com" style="pointer-events: none;"><i class="fab fa-linkedin-in"></i></a>
+      <a href="https://instagram.com" style="pointer-events: none;"><i class="fab fa-instagram"></i></a>
     </section>
     <br>
   </main>
@@ -864,15 +1012,35 @@
     <div class="modal-content">
       <span class="close" onclick="closeModal('modalThierry')">&times;</span>
       <h2>Thierry Roussel</h2>
-      <p>Entrepreneur Investor</p>
+      <h3>Independent Administrator</h3>
+      <div class="modal-text">
+        <p>
+          Entrepreneur at the age of 20, Thierry Roussel sold his company 5 years later. He supported La Centrale des
+          Particuliers as Marketing Director and later as Deputy General Manager (DGA). He played a significant role in
+          the launch of Club Internet in 1995, which was subsequently sold to Deutsch Telekom.
+        </p>
+        <p>
+          In 2000, Thierry took on the DGA role at Poliris (SeLoger, Promovacances), followed by strategic and marketing
+          leadership at 9 Telecom. Within 12 months, 9 Telecom was sold to the Louis Dreyfus group. At the end of 2002,
+          Thierry co-founded Direct Energie and remained a shareholder until its sale to Total in 2018.
+        </p>
+        <p>
+          In 2012, he ventured into impact investing as a Business Angel and founded Senioradom, a company that disrupted
+          the telecare industry in France and China. He sold Senioradom to the Vyv group in March 2020. Since then,
+          Thierry has focused on supporting investments in energy, assisting vulnerable populations (including those with
+          physical disabilities and autism), promoting responsible agricultural production, and other impactful ventures.
+        </p>
+      </div>
     </div>
   </div>
+  
 
   <div id="modalFrancois" class="modal">
     <div class="modal-content">
       <span class="close" onclick="closeModal('modalFrancois')">&times;</span>
-      <h2>François Rossier</h2>
-      <p>Strategic Consultant</p>
+      <h2>François Rossier</h3>
+        <h3>Strategic Consultant</h3>
+        <div>TDB..</div>
     </div>
   </div>
 
@@ -880,62 +1048,207 @@
     <div class="modal-content">
       <span class="close" onclick="closeModal('modalMireille')">&times;</span>
       <h2>Mireille Laforge</h2>
-      <p>PhD, HDR, CR CNRS, Founder, CSO</p>
+      <h3>PhD, HDR, CR CNRS, CSO, Founder</h3>
+      <div class="modal-text">
+        <p>
+          During many years of research on immunology and infectious diseases, I tried to understand the mechanisms of
+          the
+          physiopathology induced by viruses (HIV/SIV and recently by SARS-CoV-2) as programmed cell death and
+          immune-metabolism dysregulations. I discovered a new family of broad-spectrum antiviral drugs with dual
+          functions in immune modulation that represent a breakthrough in concept and application. These molecules
+          target viral reservoirs (brain and gut) and offer new hope for curing chronic infections and viral
+          reactivation. Several patents have been filed with Inserm-Transfert and licensed to the start-up ASTREMIHA
+          Therapeutics, of which I am the principal founder and scientific director.
+        </p>
+        <p>
+          My research focuses on understanding the role of immunometabolism in infectious diseases and inflammation to
+          understand how energetic metabolism modulates immune cell functions and impacts the quality of immune
+          responses. I coordinate projects on HIV patients under ART with poor immune responses, pediatric cohorts of
+          children with HIV presenting neurocognitive disorders, and long COVID patients (with 70% presenting
+          neurological symptoms). Our aim is to understand the role of immunometabolism in immune response failure,
+          viral reservoir establishment, and the development of neurocognitive disorders.
+        </p>
+        <p>
+          Starting in 2025, I will lead the team 3I BRAIN at UMR 1141-NeuroDiderot unit, at Robert Debré Hospital and
+          Child Brain Institute to develop a new immune-metabolic-brain axis to understand the impact of
+          immuno-metabolism modulation on the immune system during brain development, both in physiology and during
+          infections, systemic inflammation, or neuroinflammation. Our research aims to identify common pathways linking
+          dysregulation of the early immature immune system and the development of neurodevelopmental disorders like
+          autism spectrum disorder (ASD) through metabolic pathways. We aim to determine biomarkers of metabolic defects
+          in peripheral blood related to inadequate immune responses and neurodevelopmental disorders. Characterizing
+          these biomarkers could provide new tools for early diagnosis of NDD and propose new treatment strategies
+          through immuno-metabolic modulation and reprogramming.
+        </p>
+      </div>
     </div>
   </div>
 
   <div id="modalPierre" class="modal">
     <div class="modal-content">
       <span class="close" onclick="closeModal('modalPierre')">&times;</span>
-      <h2>Pierre Gressens</h>
-      <p>MD, PhD, DRE INSERM, Co-Founder, Co-CSO</p>
+      <h2>Pierre Gressens</h2>
+      <h3>MD, PhD, DRE INSERM, Co-Founder, Co-CSO</h3>
+      <div class="modal-text">
+        <p>
+          Director of UMR 1141 "NeuroDiderot" Inserm-University of Paris Cité, Pierre Gressens coordinates the
+          Hospital-University Federation "I2-D2" and serves as director of the "PremUP" Foundation. He is also an
+          attached practitioner in the pediatric neurology department (neuropediatrician) at Robert Debré Hospital in
+          Paris.
+        </p>
+        <p>
+          His translational research focuses on understanding the causes of neurodevelopmental disorders, especially those
+          related to premature birth. He explores the role of glial cells and inflammation, aiming to enhance therapeutic
+          strategies for treating brain injuries resulting from these conditions. Pierre Gressens has authored over 400
+          original articles, contributing significantly to the field.
+        </p>
+      </div>
     </div>
   </div>
+  
 
   <div id="modalPhilippe" class="modal">
     <div class="modal-content">
       <span class="close" onclick="closeModal('modalPhilippe')">&times;</span>
       <h2>Philippe Rouanet De Berchoux</h2>
-      <p>Medical Advisor</p>
+      <h3>Medical Advisor</h3>
+      <div class="modal-text">
+        <p>
+          Dr. Philippe Rouanet de Berchoux is a general practitioner with a medical degree from the University of Bordeaux.
+          He served as a military physician and was the former central director of the Armed Forces Health Service. In
+          this leadership role, he proposed and led major strategic orientations for 2030, focusing on health services,
+          research, training, and expertise in the military health system, contributing significantly to national health
+          resilience.
+        </p>
+        <p>
+          Throughout his career, Dr. Rouanet de Berchoux has utilized his clinical skills within multidisciplinary teams,
+          addressing significant health challenges related to the military. He collaborates closely with various public
+          health stakeholders and European and international military health services.
+        </p>
+        <p>
+          His diverse roles have provided him with extensive crisis management experience, including health crises. He
+          approaches health issues comprehensively, involving clinicians, researchers, epidemiologists, and care
+          organizers. Dr. Rouanet de Berchoux was a member of the Defense Ethics Committee at its inception for three
+          years.
+        </p>
+      </div>
     </div>
   </div>
+  
   <div id="modalBruno" class="modal">
     <div class="modal-content">
       <span class="close" onclick="closeModal('modalBruno')">&times;</span>
-      <h2>Bruno Villoutreix</h>
-      <p>Drug development advisor</p>
+      <h2>Bruno Villoutreix</h2>
+      <h3>Drug Development Advisor</h3>
+      <div class="modal-text">
+        <p>
+          Bruno Villoutreix is a research director at INSERM, currently working in the INSERM Unit 1141 at Robert Debré
+          Hospital in Paris.
+        </p>
+        <p>
+          Previously, he led the INSERM in silico Therapeutic Molecules unit for over 10 years. Bruno has extensive
+          experience at the intersection of molecular medicine, structural bioinformatics, cheminformatics, and artificial
+          intelligence/machine learning. He has worked in various countries including the USA, Finland, Sweden, Bulgaria,
+          and France, in both private and academic sectors.
+        </p>
+        <p>
+          Bruno Villoutreix has made significant contributions to the development of several pharmacological probes and
+          drug candidates. This includes an in silico designed molecule currently in phase II trials in Sweden for cancer.
+          He has also been involved in developing therapeutic proteins in the field of blood coagulation, designing
+          monoclonal antibodies for cancer treatment, and drug repurposing across multiple therapeutic areas such as
+          infectious diseases and cancer.
+        </p>
+        <p>
+          Additionally, he is a co-founder of a company in the Boston area, USA, focused on developing targeted therapeutics
+          for vascular barrier disorders.
+        </p>
+      </div>
     </div>
   </div>
+  
 
   <div id="modalMichael" class="modal">
     <div class="modal-content">
       <span class="close" onclick="closeModal('modalMichael')">&times;</span>
-      <h3>Michael Spedding</h3>
-      <p>Drug Development Advisor</p>
+      <h2>Michael Spedding</h2>
+      <h3>Drug Development Advisor</h3>
+      <div class="modal-text">
+        <p>
+          Michael Spedding is the President of Spedding Research Solutions SAS (Paris), focusing on amyotrophic lateral
+          sclerosis (ALS) and long COVID. He is currently developing a generic drug for ALS in phase II trials.
+        </p>
+        <p>
+          Previously, he served as the secretary general of IUPHAR from 2012 to 2024, where he coordinated pharmacology
+          efforts worldwide. Michael obtained his PhD and lectured at Sunderland. He spent eight years at Merrell Dow
+          Research in Strasbourg, focusing on calcium channels. Later, he became the Director at Syntex in Edinburgh and
+          set up Servier’s CNS research center in Paris. He also established a research center for medicinal chemistry in
+          Budapest.
+        </p>
+        <p>
+          Michael has authored over 230 publications and holds more than 20 patents. He is recognized as one of
+          Clarivate’s 3000 most-cited scientists across all disciplines since 2013, with an h-index of 75. He has
+          contributed to the clinical development of 12 drugs.
+        </p>
+      </div>
     </div>
   </div>
+  
 
   <div id="modalNicolas" class="modal">
     <div class="modal-content">
       <span class="close" onclick="closeModal('modalNicolas')">&times;</span>
-      <h3>Nicolas Chomont</h3>
-      <p>Scientific Advisor, Immunopathology/Infectiology</p>
+      <h2>Nicolas Chomont</h2>
+      <h3>Scientific Advisor, Immunopathology/Infectiology</h3>
+      <div class="modal-text">
+        <p>
+          Dr. Nicolas Chomont is an Associate Professor in the Department of Microbiology, Infectiology, and Immunology at
+          the University of Montreal and a regular researcher at the CHUM Research Center. He earned his PhD in medical
+          virology from the Pierre and Marie Curie University in Paris, focusing on interactions between HIV and the
+          genital mucosa.
+        </p>
+        <p>
+          From 2004 to 2009, Dr. Chomont conducted postdoctoral training at the University of Montreal, where he
+          characterized subpopulations of memory CD4 T cells contributing to HIV persistence in individuals under
+          antiretroviral therapy. His subsequent research at the Vaccine & Gene Therapy Institute of Florida focused on
+          further characterizing these reservoirs.
+        </p>
+        <p>
+          Since 2015, Dr. Chomont has been leading studies at the University of Montreal to elucidate molecular mechanisms
+          involved in HIV latency and to develop new therapeutic strategies for HIV eradication. His research primarily
+          explores immunological mechanisms underlying the persistence of HIV-infected cells, with a specific focus on T
+          lymphocyte proliferation in this context.
+        </p>
+      </div>
     </div>
   </div>
+  
 
   <div id="modalVincent" class="modal">
     <div class="modal-content">
       <span class="close" onclick="closeModal('modalVincent')">&times;</span>
-      <h3>Vincent Calvez</h3>
-      <p>Scientific Advisor, Infectiology/Viral Infection</p>
+      <h2>Vincent Calvez</h2>
+      <h3>Scientific Advisor, Infectiology/Viral Infection</h3>
+      <div class="modal-text">
+        <p>
+          Vincent Calvez is Professor of Clinical Virology at Sorbonne University School of Medicine, Head of the
+          Virology Department at the Pitié-Salpêtrière Hospital, and Director of the ANRS Virology and Clinical
+          Pharmacology Network. He obtained his doctorate in Medicine from the Pierre et Marie Curie School of Medicine and
+          his PhD from the Pasteur Institute in Paris.
+        </p>
+        <p>
+          For the past 30 years, he has dedicated himself to the development of antiviral agents and oncology therapeutics.
+          Vincent Calvez is the author of over 600 international publications and holds 11 patents. He is also a co-founder
+          of a clinical-stage biotech company called SkinDermic.
+        </p>
+      </div>
     </div>
   </div>
+  
 
   <div id="modalRaphael" class="modal">
     <div class="modal-content">
       <span class="close" onclick="closeModal('modalRaphael')">&times;</span>
       <h2>Raphael de Saint Exupéry</h2>
-      <p>MSc – Management, Data Analysis, Innovation Management, Pharma Consulting, Co-Founder</p>
+      <h3>MSc – Management, Data Analysis, Innovation Management, Pharma Consulting, Co-Founder</h3>
     </div>
   </div>
 
@@ -943,7 +1256,7 @@
     <div class="modal-content">
       <span class="close" onclick="closeModal('modalSophie')">&times;</span>
       <h2>Sophie Durand</h2>
-      <p>CEO</p>
+      <h3>CEO</h3>
     </div>
   </div>
 
@@ -955,7 +1268,7 @@
     }
 
     document.querySelectorAll('.nav a').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
+      anchor.addEventListener('click', function (e) {
         e.preventDefault();
         var target = document.querySelector(this.getAttribute('href'));
         window.scrollTo({
@@ -964,6 +1277,25 @@
         });
         toggleMenu(); // Close menu after clicking
       });
+    });
+
+    window.addEventListener('scroll', function () {
+      var servicesSection = document.getElementById('services');
+      var contactSection = document.getElementById('contact');
+      var servicesLink = document.querySelector('.nav a[href="#services"]');
+      var contactLink = document.querySelector('.nav a[href="#contact"]');
+      var scrollPosition = window.scrollY;
+
+      if (scrollPosition >= servicesSection.offsetTop && scrollPosition < (servicesSection.offsetTop + servicesSection.offsetHeight)) {
+        servicesLink.classList.add('active');
+        contactLink.classList.remove('active');
+      } else if (scrollPosition >= contactSection.offsetTop && scrollPosition < (contactSection.offsetTop + contactSection.offsetHeight)) {
+        servicesLink.classList.remove('active');
+        contactLink.classList.add('active');
+      } else {
+        servicesLink.classList.remove('active');
+        contactLink.classList.remove('active');
+      }
     });
 
     function openModal(id) {
