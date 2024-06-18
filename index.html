@@ -720,6 +720,13 @@
                 <button onclick="openModal('modalMireille')">+</button>
                 <button onclick="window.open('https://www.linkedin.com/in/mireille-laforge-77482a4a/', '_blank')"><i
                     class="fab fa-linkedin-in"></i></button>
+                <button onclick="window.open('https://orcid.org/0000-0002-1892-5250/', '_blank')">iD
+                  <!-- <img src="orcid-logo.svg" alt="ORCID Mireille Laforge" style="width: 15px; height: 15px; margin-top: 2px;"> -->
+                </button>
+                <button onclick="window.open('https://www.researchgate.net/profile/Laforge-Mireille/', '_blank')">RG
+                  <!-- <img src="rg-icon.png" alt="Research Gate Mireille Laforge" style="width: 15px; height: 15px; margin-top: 2px;"> -->
+                </button>
+                
                 <button onclick="location.href='mailto:mireille@example.com'"><i class="fas fa-envelope"></i></button>
               </div>
             </div>
@@ -769,7 +776,7 @@
             <div class="team-card">
               <img src="Ceo.jpeg" alt="Sophie Durand">
               <h3>Sophie Durand</h3>
-              <p>CEO</p>
+              <p><b>CEO</b></p>
               <p>
                 <small>
                   <i>
@@ -785,9 +792,27 @@
               </div>
             </div>
             <div class="team-card">
+              <img src="isabelle.png" alt="Isabelle Hilali">
+              <h3>Isabelle Hilali</h3>
+              <p><b>Independent Administrator</b></p>
+              <p>
+                <small>
+                  <i>
+                    Combines extensive global executive experience in aerospace, mobile, internet, healthcare, and education sectors with board memberships and scientific committee roles in health and AI.
+                  </i>
+                </small>
+              </p>
+              <div class="btn-container">
+                <button onclick="openModal('modalIsa')">+</button>
+                <button onclick="window.open('https://www.linkedin.com/in/isabelle-hilali-82b5111/', '_blank')"><i
+                    class="fab fa-linkedin-in"></i></button>
+                <button onclick="location.href='mailto:isabelle.hilali@datacraft.paris'"><i class="fas fa-envelope"></i></button>
+              </div>
+            </div>
+            <div class="team-card">
               <img src="thierry.jpeg" alt="Thierry Roussel">
               <h3>Thierry Roussel</h3>
-              <p>Independent Administrator</p>
+              <p><b>Independent Administrator</b></p>
               <p>
                 <small>
                   <i>
@@ -807,7 +832,7 @@
             <div class="team-card">
               <img src="francois.jpeg" alt="François Rossier">
               <h3>François Rossier</h3>
-              <p>Strategic Consultant</p>
+              <p><b>Strategic Consultant</b></p>
               <p>
                 <small>
                   <i>
@@ -830,7 +855,7 @@
             <div class="team-card">
               <img src="philippe.jpeg" alt="Philippe Rouanet De Berchoux">
               <h3>Philippe Rouanet De Berchoux</h3>
-              <p>Medical Advisor</p>
+              <p><b>Medical Advisor</b></p>
               <p>
                 <small>
                   <i>
@@ -851,7 +876,7 @@
             <div class="team-card">
               <img src="bruno.png" alt="Bruno Villoutreix">
               <h3>Bruno Villoutreix</h3>
-              <p>Drug Development Advisor</p>
+              <p><b>Drug Development Advisor</b></p>
               <p>
                 <small>
                   <i>
@@ -872,7 +897,7 @@
             <div class="team-card">
               <img src="michael.jpeg" alt="Michael Spedding">
               <h3>Michael Spedding</h3>
-              <p>Drug Development Advisor</p>
+              <p><b>Drug Development Advisor</b></p>
               <p>
                 <small>
                   <i>
@@ -892,7 +917,7 @@
             <div class="team-card">
               <img src="nicolas.jpeg" alt="Nicolas Chomont">
               <h3>Nicolas Chomont</h3>
-              <p>Scientific Advisor, Immunopathology/Infectiology</p>
+              <p><b>Scientific Advisor, Immunopathology/Infectiology</b></p>
               <p>
                 <small>
                   <i>Associate Professor at the University of Montreal, researches HIV latency and eradication, focusing
@@ -912,7 +937,7 @@
             <div class="team-card">
               <img src="vincent.jpeg" alt="Vincent Calvez">
               <h3>Vincent Calvez</h3>
-              <p>Scientific Advisor, Infectiology/Viral Infection</p>
+              <p><b>Scientific Advisor, Infectiology/Viral Infection</b></p>
               <p><small><i>Professor of Clinical Virology at Sorbonne University, leads the Virology Department at
                     Pitié-Salpêtrière Hospital, directs the ANRS Virology Network, and has significant contributions in
                     antiviral and oncology therapeutics.</i></small> </p>
@@ -1256,7 +1281,30 @@
     <div class="modal-content">
       <span class="close" onclick="closeModal('modalSophie')">&times;</span>
       <h2>Sophie Durand</h2>
-      <h3>CEO</h3>
+      <h3>TD..</h3>
+    </div>
+  </div>
+
+  <div id="modalIsa" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modalIsa')">&times;</span>
+      <h2>Isabelle Hilali</h2>
+      <h3>Independent Administrator</h3>
+      <div class="bio-container">
+        <p>
+            Isabelle Hilali is the founder and CEO of <strong>datacraft</strong>, a club facilitating the exchange of best practices among data and artificial intelligence experts.
+        </p>
+        <p>
+            Before founding datacraft, she held numerous executive positions in the aerospace, mobile industry, internet, healthcare, and education sectors, both in France and abroad, including in the United States.
+        </p>
+        <p>
+            Isabelle serves as a board member of the <strong>Healthcare Data Institute</strong> and is an independent board member of the French Navy's <strong>Hydrographic and Oceanographic Service (SHOM)</strong>. She is a member of the Expert Committee on Public Interest (<strong>CESREES</strong>) at the National Institute of Health Data (<strong>INDS</strong>). She is also a member of the scientific committee for the Artificial Intelligence and Cancer sector. Isabelle is part of the scientific council of <strong>MoiPatient</strong> and has been involved for several years in the X-HEC entrepreneurship master's program and the ESSEC Innovation & Health master's program.
+        </p>
+        <p>
+            Personally, she is committed to issues of equal opportunities.
+        </p>
+    </div>
+    
     </div>
   </div>
 
