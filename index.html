@@ -249,11 +249,14 @@
     .team-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1rem;
+      gap: 4rem;
       margin-top: 2rem;
     }
 
     .team-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
       text-align: center;
       padding: 1rem;
       border: 1px solid #ddd;
@@ -261,10 +264,18 @@
       transition: transform 0.2s, background-color 0.2s;
       cursor: pointer;
       position: relative;
+      min-width: 250px;
+    }
+
+    .team-info {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
     }
 
     .team-card:hover {
-      transform: scale(1.05);
+      transform: scale(1.01);
       background-color: #4057db;
       color: #fff;
     }
@@ -724,10 +735,11 @@
           <h3>Founders:</h3>
           <div class="team-grid">
             <div class="team-card">
+              <div class="team-info">
               <img src="founder.jpeg" alt="Mireille Laforge">
-              <h4>Mireille Laforge</h4>
+              <h3>Mireille Laforge</h3>
               <p><small> PhD, HDR, CR CNRS, CSO</small></p>
-              <p><b>Founder</b></p>
+              <h4><b>Founder</b></h4>
               <p>
                 <small>
                   <i>
@@ -737,33 +749,35 @@
                   </i>
                 </small>
               </p>
+             </div>
               <div class="btn-container">
                 <button onclick="openModal('modalMireille')">+</button>
                 <button onclick="window.open('https://www.linkedin.com/in/mireille-laforge-77482a4a/', '_blank')"><i
                     class="fab fa-linkedin-in"></i></button>
                 <button onclick="window.open('https://orcid.org/0000-0002-1892-5250/', '_blank')">iD
-                  <!-- <img src="orcid-logo.svg" alt="ORCID Mireille Laforge" style="width: 15px; height: 15px; margin-top: 2px;"> -->
                 </button>
                 <button onclick="window.open('https://www.researchgate.net/profile/Laforge-Mireille/', '_blank')">RG
-                  <!-- <img src="rg-icon.png" alt="Research Gate Mireille Laforge" style="width: 15px; height: 15px; margin-top: 2px;"> -->
                 </button>
-                
                 <button onclick="location.href='mailto:mireille@example.com'"><i class="fas fa-envelope"></i></button>
               </div>
             </div>
             <div class="team-card">
+              <div class="team-info">
               <img src="pierre.jpeg" alt="Pierre Gressens">
               <h3>Pierre Gressens</h3>
               <p><small>MD, PhD, DRE INSERM, Co-CSO</small></p>
-              <p><b>Co-Founder</b></p>
+              <h4><b>Co-Founder</b></h4>
               <p>
                 <small>
                   <i>
-                    Director of multiple research and clinical initiatives, focusing on neurodevelopmental disorders and
-                    treatments related to premature birth, with over 400 published articles.
+                    Director of research and clinical initiatives focusing on neurodevelopmental 
+                    disorders and treatments related to premature birth,
+                    with over 400 published articles, 
+                    contributing significantly to medical science.
                   </i>
                 </small>
               </p>
+            </div>
               <div class="btn-container">
                 <button onclick="openModal('modalPierre')">+</button>
                 <button onclick="window.open('https://www.linkedin.com/in/pierre-gressens-5b1bb014b/', '_blank')"><i
@@ -772,17 +786,21 @@
               </div>
             </div>
             <div class="team-card">
+              <div class="team-info">
               <img src="raphael.jpeg" alt="Raphael de Saint Exupéry">
               <h3>Raphael de Saint Exupéry</h3>
-              <p>Innovation Management</p>
-              <p><b>Co-Founder</b></p>
+              <p><small> Innovation Management</small></p>
+              <h4><b>Co-Founder</b></h4>
               <p>
                 <small>
                   <i>
-                    MSc – Management, Data Analysis, Innovation management and Pharma consulting.
+                    MSc in Management, specializing in Data Analysis, Innovation Management, 
+                    and Pharma Consulting, offering expertise in strategic decision-making 
+                    and innovative solutions within the pharmaceutical and healthcare industries.
                   </i>
                 </small>
               </p>
+            </div>
               <div class="btn-container">
                 <button onclick="openModal('modalRaphael')">+</button>
                 <button onclick="window.open('https://www.linkedin.com/in/raphael-de-saint-exupery/', '_blank')"><i
@@ -795,16 +813,21 @@
           <h3>Board Members:</h3>
           <div class="team-grid">
             <div class="team-card">
-              <img src="Ceo.jpeg" alt="Sophie Durand">
-              <h3>Sophie Durand</h3>
-              <p><b>CEO</b></p>
-              <p>
-                <small>
-                  <i>
-                    TBD..
-                  </i>
-                </small>
-              </p>
+              <div class="team-info">
+                <img src="Ceo.jpeg" alt="Sophie Durand">
+                <h3>Sophie Durand</h3>
+                <p><b>CEO</b></p>
+                <p>
+                  <small>
+                    <i>
+                      Sophie has over 15 years of international leadership in biotechnology and finance, 
+                      including roles in biotech investment banking, financial advisory, 
+                      managing financial communications at Groupe BPCE, co-founding the Microbiome Foundation, 
+                      running Life Sciences Conseil, and serving as CEO of Stellate Therapeutics.
+                    </i>
+                  </small>
+                </p>
+              </div>
               <div class="btn-container">
                 <button onclick="openModal('modalSophie')">+</button>
                 <button onclick="window.open('https://www.linkedin.com/in/sophie-denanteuildurand/', '_blank')"><i
@@ -813,16 +836,21 @@
               </div>
             </div>
             <div class="team-card">
+              <div class="team-info">
               <img src="isabelle.png" alt="Isabelle Hilali">
               <h3>Isabelle Hilali</h3>
               <p><b>Independent Administrator</b></p>
               <p>
                 <small>
                   <i>
-                    Combines extensive global executive experience in aerospace, mobile, internet, healthcare, and education sectors with board memberships and scientific committee roles in health and AI.
+                    Combines extensive global executive experience in aerospace, mobile, internet, healthcare, and
+                    education sectors with board memberships and scientific committee roles in health and AI. 
+                    Her leadership has driven innovation and strategic growth, 
+                    particularly in international markets, contributing significantly to technological advancements and healthcare improvements.
                   </i>
                 </small>
               </p>
+              </div>
               <div class="btn-container">
                 <button onclick="openModal('modalIsa')">+</button>
                 <button onclick="window.open('https://www.linkedin.com/in/isabelle-hilali-82b5111/', '_blank')"><i
@@ -831,17 +859,21 @@
               </div>
             </div>
             <div class="team-card">
+              <div class="team-info">
               <img src="thierry.jpeg" alt="Thierry Roussel">
               <h3>Thierry Roussel</h3>
               <p><b>Independent Administrator</b></p>
               <p>
                 <small>
                   <i>
-                    Entrepreneur and executive, co-founded Direct Energie and Senioradom, sold multiple companies, now
-                    invests in energy, support for vulnerable people, food, and agriculture.
+                    Entrepreneur and executive, co-founded Direct Energie and Senioradom, 
+                    sold multiple companies, now invests in energy, support for vulnerable people, food, and agriculture. 
+                    His leadership has been instrumental in driving growth and innovation,
+                     and he continues to influence the energy and healthcare sectors through strategic investments and advisory roles.
                   </i>
                 </small>
               </p>
+              </div>
               <div class="btn-container">
                 <button onclick="openModal('modalThierry')">+</button>
                 <button
@@ -851,16 +883,18 @@
               </div>
             </div>
             <div class="team-card">
+              <div class="team-info">
               <img src="francois.jpeg" alt="François Rossier">
               <h3>François Rossier</h3>
               <p><b>Strategic Consultant</b></p>
               <p>
                 <small>
                   <i>
-                    TBD..
+                    François Rossier brings diverse professional expertise from defense and interministerial roles to his current positions in private sector as Key Account Director for France and Switzerland, alongside volunteering as Secretary General of Ailes de France Foundation and ambassador for Institut Robert Debré Brain Child Project.
                   </i>
                 </small>
               </p>
+              </div>
               <div class="btn-container">
                 <button onclick="openModal('modalFrancois')">+</button>
                 <button
@@ -874,6 +908,7 @@
           <h3>Scientific Advisory Board Members:</h3>
           <div class="team-grid">
             <div class="team-card">
+              <div class="team-info">
               <img src="philippe.jpeg" alt="Philippe Rouanet De Berchoux">
               <h3>Philippe Rouanet De Berchoux</h3>
               <p><b>Medical Advisor</b></p>
@@ -886,6 +921,7 @@
                   </i>
                 </small>
               </p>
+              </div>
               <div class="btn-container">
                 <button onclick="openModal('modalPhilippe')">+</button>
                 <button
@@ -895,6 +931,7 @@
               </div>
             </div>
             <div class="team-card">
+              <div class="team-info">
               <img src="bruno.png" alt="Bruno Villoutreix">
               <h3>Bruno Villoutreix</h3>
               <p><b>Drug Development Advisor</b></p>
@@ -907,6 +944,7 @@
                   </i>
                 </small>
               </p>
+              </div>
               <div class="btn-container">
                 <button onclick="openModal('modalBruno')">+</button>
                 <button
@@ -916,6 +954,7 @@
               </div>
             </div>
             <div class="team-card">
+              <div class="team-info">
               <img src="michael.jpeg" alt="Michael Spedding">
               <h3>Michael Spedding</h3>
               <p><b>Drug Development Advisor</b></p>
@@ -927,6 +966,7 @@
                   </i>
                 </small>
               </p>
+              </div>
               <div class="btn-container">
                 <button onclick="openModal('modalMichael')">+</button>
                 <button
@@ -936,6 +976,7 @@
               </div>
             </div>
             <div class="team-card">
+              <div class="team-info">
               <img src="nicolas.jpeg" alt="Nicolas Chomont">
               <h3>Nicolas Chomont</h3>
               <p><b>Scientific Advisor, Immunopathology/Infectiology</b></p>
@@ -947,6 +988,7 @@
                   </i>
                 </small>
               </p>
+              </div>
               <div class="btn-container">
                 <button onclick="openModal('modalNicolas')">+</button>
                 <button
@@ -956,12 +998,14 @@
               </div>
             </div>
             <div class="team-card">
+              <div class="team-info">
               <img src="vincent.jpeg" alt="Vincent Calvez">
               <h3>Vincent Calvez</h3>
               <p><b>Scientific Advisor, Infectiology/Viral Infection</b></p>
               <p><small><i>Professor of Clinical Virology at Sorbonne University, leads the Virology Department at
                     Pitié-Salpêtrière Hospital, directs the ANRS Virology Network, and has significant contributions in
                     antiviral and oncology therapeutics.</i></small> </p>
+              </div>
               <div class="btn-container">
                 <button onclick="openModal('modalVincent')">+</button>
                 <button
@@ -1084,7 +1128,9 @@
       <span class="close" onclick="closeModal('modalFrancois')">&times;</span>
       <h2>François Rossier</h3>
         <h3>Strategic Consultant</h3>
-        <div>TDB..</div>
+        <div>
+          <p><strong>François Rossier</strong> has a diversified professional expertise gained within the Ministry of Defense and interministerial services under the Prime Minister, serving as the <strong>General Commissioner of the Air Force</strong>. Now in the private sector, he holds the position of <strong>Key Account Director for France and Switzerland</strong>. As a volunteer, he serves as the <strong>Secretary General of the Ailes de France Foundation</strong>. Additionally, he acts as an ambassador for the <strong>Institut Robert Debré Brain Child Project</strong>.</p> 
+        </div>
     </div>
   </div>
 
@@ -1310,7 +1356,10 @@
     <div class="modal-content">
       <span class="close" onclick="closeModal('modalSophie')">&times;</span>
       <h2>Sophie Durand</h2>
-      <h3>TD..</h3>
+      <h3>CEO</h3>
+      <div class="modal-text">
+        <p><strong>Sophie</strong> brings more than 15 years of international leadership experience across the <strong>biotechnology</strong> and <strong>finance sectors</strong>, having started her career in <strong>biotechnology investment banking</strong> at <strong>Bryan, Garnier & Co.</strong> and <strong>Kepler Capital Markets</strong>, as well as <strong>financial advisory</strong> at <strong>HSBC</strong>. She then moved to the major French bank <strong>Groupe BPCE</strong> to manage <strong>financial communications</strong> and <strong>investor relations</strong>. Passionate about the <strong>healthcare sector</strong>, Sophie co-founded the <strong>Microbiome Foundation</strong>. In parallel, Sophie founded a consulting firm, <strong>Life Sciences Conseil</strong>, to help <strong>biotech companies</strong> raise funds. From 2021 to 2023, Sophie was <strong>CEO of Stellate Therapeutics</strong>, a French company based in New York developing <strong>neuroprotective molecules</strong> for <strong>neurodegenerative diseases</strong>.</p>
+      </div>
     </div>
   </div>
 
