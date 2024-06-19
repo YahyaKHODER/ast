@@ -100,6 +100,7 @@
       border: none;
       font-size: 1.5rem;
       cursor: pointer;
+      margin-top: 15px;
     }
 
     .close-menu {
@@ -165,7 +166,7 @@
     }
 
     .section {
-      padding: 4rem 1rem;
+      padding: 7rem 1rem;
       background: #fff;
       color: #333;
       text-align: center;
@@ -677,6 +678,7 @@
       </a>
       <nav class="nav">
         <ul>
+          <button class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-times"></i></button>
           <li><a href="#home" class="active">Home</a></li>
           <li><a href="#services">About Us</a></li>
           <li><a href="#teams">Our Team</a></li>
@@ -684,7 +686,6 @@
           <li><a href="#partners">Partners</a></li>
           <li><a href="#contact" class="btn">Contact Us</a></li>
         </ul>
-        <button class="close-menu" onclick="toggleMenu()"><i class="fas fa-times"></i></button>
       </nav>
       <button class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
     </div>
